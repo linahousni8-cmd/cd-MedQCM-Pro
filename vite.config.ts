@@ -5,5 +5,5 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   // Utiliser './' permet au site de fonctionner peu importe le nom du dossier sur GitHub
-  base: 'cd-MedQCM-Pro/',
+  base: './',
 })

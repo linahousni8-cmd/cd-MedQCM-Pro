@@ -6,76 +6,62 @@ export const INITIAL_DATA: DataStore = {
     // 1ÈRE ANNÉE
     // ============================================================
     {
-      id: 'y1',
+      id: 'annee-1',
       name: '1ère Année Médecine',
       semesters: [
+        // --- SEMESTRE 1 ---
         {
           id: 's1',
           name: 'Semestre 1',
           modules: [
-            // --- MODULE EXEMPLE : ANATOMIE ---
             {
-              id: 'anat1',
+              id: 'mod-anat-1',
               name: 'Anatomie I',
-              description: 'Ostéologie et Arthrologie du membre supérieur',
-              
-              // VOS FICHIERS PDF ICI
+              description: 'Ostéologie du membre supérieur et inférieur',
+              // LISTE DES PDFS DU MODULE
               pdfs: [
-                { 
-                  id: 'pdf_anat_1', 
-                  name: 'Cours Ostéologie.pdf', 
-                  url: '#' // Mettez le lien de votre PDF ici
-                }
+                { id: 'pdf1', name: 'Cours Ostéologie.pdf', url: '#' },
+                { id: 'pdf2', name: 'Cours Arthrologie.pdf', url: '#' }
               ],
-
-              // VOS QUESTIONS QCM ICI
+              // LISTE DES QUESTIONS QCM DU MODULE
               questions: [
                 {
                   id: 'q1',
-                  text: 'Quel est l\'os latéral de l\'avant-bras ?',
-                  options: ['Ulna', 'Radius', 'Humérus', 'Fémur'],
-                  correctIndex: 1, // 0=1er choix, 1=2ème choix...
-                  explanation: 'Le radius est situé en dehors (latéral), l\'ulna en dedans (médial).'
+                  text: 'Quel est l\'os le plus long du corps humain ?',
+                  options: ['Humérus', 'Fémur', 'Tibia', 'Fibula'],
+                  correctIndex: 1, // 0 = A, 1 = B, 2 = C, 3 = D
+                  explanation: 'Le fémur est l\'os de la cuisse et c\'est le plus long du corps.'
                 },
                 {
                   id: 'q2',
-                  text: 'Combien de vertèbres cervicales possède l\'homme ?',
-                  options: ['5', '7', '12', 'Sacrées'],
-                  correctIndex: 1,
-                  explanation: 'Il y a 7 vertèbres cervicales (C1 à C7).'
+                  text: 'Combien de vertèbres lombaires possède l\'homme ?',
+                  options: ['7', '12', '5', '3'],
+                  correctIndex: 2,
+                  explanation: 'Il y a 5 vertèbres lombaires (L1 à L5).'
                 }
               ]
             },
-            
-            // --- MODULE EXEMPLE : HISTOLOGIE ---
             {
-              id: 'histo1',
-              name: 'Histologie',
-              description: 'Étude des tissus biologiques',
+              id: 'mod-cyto-1',
+              name: 'Cytologie',
+              description: 'Biologie cellulaire',
               pdfs: [],
-              questions: [
-                {
-                  id: 'hq1',
-                  text: 'Quel type d\'épithélium tapisse les vaisseaux sanguins ?',
-                  options: ['Endothélium', 'Urothélium', 'Épiderme', 'Mésothélium'],
-                  correctIndex: 0,
-                  explanation: 'L\'endothélium est un épithélium pavimenteux simple.'
-                }
-              ]
+              questions: [] // Ajoutez vos questions ici entre les crochets
             }
           ]
         },
+        // --- SEMESTRE 2 ---
         {
           id: 's2',
           name: 'Semestre 2',
           modules: [
-             {
-               id: 'phy1',
-               name: 'Physiologie',
-               description: 'Fonctionnement des organismes vivants',
-               pdfs: [],
-               questions: [] // Ajoutez vos questions ici
-             }
+            {
+              id: 'mod-phy-1',
+              name: 'Physiologie',
+              description: '',
+              pdfs: [],
+              questions: []
+            }
           ]
         }
       ]
@@ -85,18 +71,27 @@ export const INITIAL_DATA: DataStore = {
     // 2ÈME ANNÉE
     // ============================================================
     {
-      id: 'y2',
+      id: 'annee-2',
       name: '2ème Année Médecine',
       semesters: [
         {
-          id: 's3', 
-          name: 'Semestre 3', 
-          modules: [] // Ajoutez vos modules ici
+          id: 's3',
+          name: 'Semestre 3',
+          modules: [
+             // Copiez-collez un bloc "module" ci-dessous pour en ajouter un
+             {
+               id: 'mod-s3-1',
+               name: 'Module S3 Exemple',
+               description: 'Description...',
+               pdfs: [],
+               questions: []
+             }
+          ]
         },
         {
-          id: 's4', 
-          name: 'Semestre 4', 
-          modules: [] 
+          id: 's4',
+          name: 'Semestre 4',
+          modules: []
         }
       ]
     },
@@ -105,12 +100,24 @@ export const INITIAL_DATA: DataStore = {
     // 3ÈME ANNÉE
     // ============================================================
     {
-      id: 'y3',
+      id: 'annee-3',
       name: '3ème Année Médecine',
       semesters: [
         { id: 's5', name: 'Semestre 5', modules: [] },
         { id: 's6', name: 'Semestre 6', modules: [] }
       ]
+    },
+    
+    // ============================================================
+    // 4ÈME ANNÉE
+    // ============================================================
+    {
+        id: 'annee-4',
+        name: '4ème Année Médecine',
+        semesters: [
+          { id: 's7', name: 'Semestre 7', modules: [] },
+          { id: 's8', name: 'Semestre 8', modules: [] }
+        ]
     }
   ]
 };
