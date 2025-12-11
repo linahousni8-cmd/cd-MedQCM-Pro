@@ -1,5 +1,5 @@
 import React from 'react';
-import { LucideLayoutDashboard, LucideBookOpen, LucideGraduationCap, LucideMail } from 'lucide-react';
+import { LucideLayoutDashboard, LucideGraduationCap, LucideMail } from 'lucide-react';
 
 interface LayoutProps {
   children: React.ReactNode;

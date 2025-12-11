@@ -1,4 +1,4 @@
-import { DataStore } from './types';
+import type { DataStore } from './types';
 
 export const INITIAL_DATA: DataStore = {
   years: [
