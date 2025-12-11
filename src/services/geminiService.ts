@@ -4,27 +4,34 @@ import type { Question } from "../types";
 // Fonction sécurisée pour récupérer la clé API dans un environnement Vite/Browser
 const getApiKey = () => {
   try {
-    // Essayer d'abord la variable standard (si définie via define dans vite.config)
     // @ts-ignore
     if (typeof process !== 'undefined' && process.env?.API_KEY) {
        // @ts-ignore
        return process.env.API_KEY;
     }
-    // Sinon utiliser la méthode standard Vite
     // @ts-ignore
     if (import.meta.env?.VITE_API_KEY) {
        // @ts-ignore
        return import.meta.env.VITE_API_KEY;
     }
   } catch (e) {
-    console.warn("Erreur lors de la récupération de la clé API", e);
+    console.warn("Erreur lecture clé API", e);
   }
   return '';
 };
 
-const ai = new GoogleGenAI({ apiKey: getApiKey() });
-
 export const generateQuestionsForModule = async (moduleName: string, count: number = 3): Promise<Question[]> => {
+  const apiKey = getApiKey();
+  
+  if (!apiKey) {
+    console.warn("Clé API manquante");
+    // On retourne une erreur explicite ou des questions vides pour ne pas crasher
+    throw new Error("Clé API manquante. Veuillez ajouter VITE_API_KEY dans les Secrets GitHub.");
+  }
+
+  // Initialisation lazy (uniquement quand on en a besoin) pour éviter les crashs au démarrage
+  const ai = new GoogleGenAI({ apiKey });
+  
   const model = "gemini-2.5-flash";
   
   const prompt = `Génère ${count} questions QCM (Choix Multiples) pour un module de médecine intitulé "${moduleName}".

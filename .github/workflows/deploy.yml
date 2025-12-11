@@ -3,6 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ main ]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -22,12 +23,13 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm ci
+        # 'npm install' est plus souple que 'npm ci' et fonctionne sans package-lock.json
+        run: npm install
 
       - name: Build
         run: npm run build
         env:
-          # Si vous ajoutez votre clé dans les secrets GitHub, elle sera utilisée ici
+          # Si cette ligne affiche un avertissement "Context access", ignorez-le, c'est normal tant que le secret n'est pas créé.
           VITE_API_KEY: ${{ secrets.VITE_API_KEY }}
 
       - name: Upload artifact
