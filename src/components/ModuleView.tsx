@@ -57,9 +57,20 @@ export const ModuleView: React.FC<ModuleViewProps> = ({ moduleData, onBack, onUp
         questions: [...moduleData.questions, ...newQuestions]
       };
       onUpdateModule(updatedModule);
-    } catch (e) {
+    } catch (e: any) {
       console.error(e);
-      alert("Erreur lors de la génération. Vérifiez votre clé API dans le fichier .env (VITE_API_KEY).");
+      // Gestion intelligente des messages d'erreur
+      let message = "Une erreur est survenue lors de la génération.";
+      
+      // Détection de l'erreur de quota (429) ou de surcharge (503)
+      const errorString = e.toString();
+      if (errorString.includes('429') || errorString.includes('Quota') || errorString.includes('Resource has been exhausted')) {
+        message = "⚠️ Le serveur est très sollicité (Limite de quota atteinte). Veuillez attendre une minute avant de réessayer.";
+      } else if (errorString.includes('API_KEY')) {
+         message = "Erreur de configuration : Clé API manquante ou invalide.";
+      }
+
+      alert(message);
     } finally {
       setIsGenerating(false);
     }
